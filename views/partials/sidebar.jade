@@ -1,0 +1,24 @@
+aside.aside
+  // START Sidebar (left)
+  .aside-inner
+    nav.sidebar(data-sidebar-anyclick-close='')
+      // START sidebar nav
+      ul.nav
+        // Iterates over all sidebar items
+        li.nav-heading
+          span(data-localize='sidebar.heading.HEADER') Menu Navigation
+        li.active
+          a(href='singleview.html', title='Single View')
+            em.fa.fa-file-o
+            span(data-localize='sidebar.nav.SINGLEVIEW') Single View
+        li
+          a(href='#menuid', title='Menu', data-toggle='collapse')
+            em.icon-folder
+            span(data-localize='sidebar.nav.menu.MENU') Menu
+          ul#menuid.nav.sidebar-subnav.collapse
+            li.sidebar-subnav-header Menu
+            li
+              a(href='submenu.html', title='Sub Menu')
+                span(data-localize='sidebar.nav.menu.SUBMENU') Sub Menu
+      // END sidebar nav
+  // END Sidebar (left)
