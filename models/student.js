@@ -8,15 +8,15 @@ var StudentSchema = mongoose.Schema({
     mname: { type: String },
     lname: { type: String }
   },
-  username: {
-    type: String,
-    index: true
-  },
   password: {
     type: String
   },
   email: {
-    type: String
+    type: String,
+    index: {
+      unique: true,
+      dropDups: true
+    }
   }
 }, {collection: 'student'});
 
@@ -28,5 +28,21 @@ module.exports.createStudent = function(newStudent, callback) {
       newStudent.password = hash;
       newStudent.save(callback);
     });
+  });
+}
+
+module.exports.getStudentByEmail = function(email, callback) {
+  var query = {email: email};
+  Student.findOne(query, callback);
+}
+
+module.exports.getStudentById = function(id, callback) {
+  Student.findById(id, callback);
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback) {
+  bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+    if (err) throw err;
+    callback(null, isMatch);
   });
 }
