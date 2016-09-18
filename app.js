@@ -17,7 +17,7 @@ var LocalStrategy = require('passport-local').Strategy;
 //===============ADDED FOR LOGIN======================
 
 
-mongoose.connect('mongodb://localhost/demodb1');
+mongoose.connect('mongodb://10.132.57.64/demodb1');
 var db = mongoose.connection;
 
 var register = require('./routes/register/index');
